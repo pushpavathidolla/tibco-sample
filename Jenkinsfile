@@ -63,7 +63,7 @@ pipeline {
         steps {
 		 script {
 		  echo "Creating Jira issue"
-          testIssue = [fields: [ project: [key: 'POC'],summary: 'New JIRA Created from Jenkins.',description: 'New JIRA Created from Jenkins.',issuetype: [id: '1']]]
+          testIssue = [fields: [ project: [key: 'TEST'],summary: 'New JIRA Created from Jenkins.',description: 'New JIRA Created from Jenkins.',issuetype: [id: '1']]]
           response = jiraNewIssue issue: testIssue, site: 'Tibco-Demo'
           echo response.successful.toString()
           echo response.data.toString()

@@ -20,7 +20,6 @@ pipeline {
       stage('Cleanup')
       {
         steps {
-          jiraComment body: 'This comment was sent from Jenkins', issueKey: 'TEST-2'
           echo "Cleaning it up..."
           echo currentBuild.projectName
         }
@@ -31,11 +30,6 @@ pipeline {
           echo "Compile & Build..."
           sh 'mvn -f Helloworld.application.parent/pom.xml clean initialize package docker:build'
         }
-          post {
-                 always {
-                     jiraSendBuildInfo site: 'devopstesting.atlassian.net', branch: 'master'
-                 }
-             }
       }
       stage('Docker Push')
       {
